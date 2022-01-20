@@ -104,3 +104,15 @@ ON (de.dept_no = d.dept_no)
 WHERE (rt.to_date = '9999-01-01')
 GROUP BY de.dept_no, d.dept_no
 ORDER BY de.dept_no;
+
+-- Ratio of Retirees to Mentors
+SELECT rd.count as count_retiring, md.count as count_mentors, md.title, rd.count/md.count as ratio_title
+FROM mentor_count_titles as md
+INNER JOIN retiring_titles as rd
+ON (rd.title = md.title);
+
+-- Ratio of Retirees to Mentors by Department
+SELECT rd.count as count_retiring, md.count as count_mentors,rd.dept_name, rd.count/md.count as ratio_dept
+FROM mentor_by_dept as md
+INNER JOIN retire_by_dept as rd
+ON (rd.dept_no = md.dept_no);
