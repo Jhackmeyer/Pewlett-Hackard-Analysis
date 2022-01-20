@@ -20,6 +20,11 @@ Above is a table detailing the counts of possible mentors by title, organized by
   * The mentor table is missing a row for managers.
   * The largest group of retirees are Senior Engineers.
 
+### Retirees per Mentor
+![title_per_mentor](Images/ratio_title.png)
+
+Above is a table displaying the ratio of retirees to mentors.  This helps us see how many mentees each mentor would need in order to make up the workforce difference after the retirees leave.
+
 ## Summary
 
 ### Findings
@@ -29,8 +34,8 @@ In addition, there seems to be a disparity between the two groups' qualification
 
 For further investigation, I would look at the same issue from the perspective of departments.  It may be that Marketing will be hit much harder by this "silver tsunami" than Sales, for example.
 
-### Further Questions
-To explore this question, we establish tables which tally up the retirement-ready employees grouped by department.
+## Further Questions
+To explore the question of departmental differences, we establish tables which tally up the retirement-ready employees grouped by department.
 ```
 SELECT COUNT(rt.emp_no),
 	d.dept_no,
@@ -61,13 +66,18 @@ GROUP BY d.dept_no;
 ```
 
 And our results are as follows:
+### Retiring Employees by Department
 
 ![retiring_employees_dept](Images/retiring_count_by_dept.png)
 
-The above table describes retirement-ready employees, grouped by department.
+### Eligible Mentors by Department
 
 ![eligible_mentors_dept](Images/mentor_count_by_dept.png)
 
-The above table describes eligible mentors, grouped by department.
 
-In these tables, we can see a familiar, large disparity in size.  However, it does not seem any one department is significantly more at risk than any other in the face of this "silver tsunami".
+In these tables, we can see a familiar, large disparity in size.  However, it does not seem any one department is significantly more at risk than any other in the face of this "silver tsunami".  Let us confirm this with another table.
+
+### Retirees per Mentor by Department
+![department_per_mentor](Images/ratio_dept.png)
+
+Above is a table displaying the ratio of retirees to mentors, by department.  With this, we can verify that no one department has a significantly worse ratio than any other,and would be affected comparably by the departure of retirees.
